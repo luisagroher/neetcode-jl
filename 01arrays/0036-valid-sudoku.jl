@@ -29,9 +29,8 @@ function isValidSudoku(board::Vector{Vector{Char}})
         push!(cols[c], board[r][c])
 
         # Check square validity
-        square_row = (1 <= r <= 3) ? 1 : (4 <= r <= 6) ? 2 : 3
-        square_col = (1 <= c <= 3) ? 1 : (4 <= c <= 6) ? 2 : 3
-
+        square_row = (r - 1) ÷ 3 + 1
+        square_col = (c - 1) ÷ 3 + 1
 
         if haskey(squares, (square_row, square_col)) && board[r][c] in squares[(square_row, square_col)]
             return false
